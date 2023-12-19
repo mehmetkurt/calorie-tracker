@@ -1,0 +1,49 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "_AuthLayout";
+}
+
+<form asp-action="Login">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h2>Giriş Yap</h2>
+            <p>Enter your email and password to login</p>
+        </div>
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-4">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="text" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <div class="form-check form-check-primary form-check-inline">
+                    <input asp-for="RememberMe" class="form-check-input me-3" type="checkbox" id="form-check-default">
+                    <label asp-for="RememberMe" class="form-check-label" for="form-check-default">
+                        Beni Hatırla
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="mb-4">
+                <button type="submit" class="btn btn-secondary w-100">GİRİŞ YAP</button>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="text-center">
+                <p class="mb-0">Dont't have an account ? @Html.ActionLink("Üye Ol", "Register", "Customer", null, new { @class = "text-warning" })</p>
+            </div>
+        </div>
+    </div>
+</form>

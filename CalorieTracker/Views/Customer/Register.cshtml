@@ -1,0 +1,61 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Üye Ol";
+    Layout = "_AuthLayout";
+}
+
+<form asp-action="Register">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h2>Üye Ol</h2>
+            <p>Enter your email and password to login</p>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-4">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-4">
+                <label asp-for="Firstname" class="form-label">Adınız</label>
+                <input asp-for="Firstname" type="text" class="form-control">
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-4">
+                <label asp-for="Lastname" class="form-label">Soyadınız</label>
+                <input asp-for="Lastname" type="text" class="form-control">
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-4">
+                <label asp-for="Gender" class="form-label">Cinsiyet</label>
+                <select asp-for="Gender" asp-items="Html.GetEnumSelectList<CalorieTracker.Data.Gender>()"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-4">
+                <button type="submit" class="btn btn-secondary w-100">SIGN IN</button>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="text-center">
+                <p class="mb-0">Do you have an account ? @Html.ActionLink("Giriş Yap", "Login", "Customer", null, new { @class = "text-warning" })</p>
+            </div>
+        </div>
+    </div>
+</form>
