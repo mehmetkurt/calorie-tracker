@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-12 mb-3">
             <h2>Giriş Yap</h2>
-            <p>Enter your email and password to login</p>
+            <p>Giriş yapmak için email ve şifrenizi girin</p>
         </div>
         <div class="col-md-12">
             <div class="mb-3">
@@ -19,9 +19,10 @@
         </div>
         <div class="col-12">
             <div class="mb-4">
-                <label asp-for="Password" class="form-label">Password</label>
+                <label asp-for="Password" class="form-label">Şifre</label>
                 <input asp-for="Password" type="text" class="form-control">
                 <span asp-validation-for="Password" class="text-danger"></span>
+                
             </div>
         </div>
         <div class="col-12">
@@ -42,7 +43,7 @@
         </div>
         <div class="col-12">
             <div class="text-center">
-                <p class="mb-0">Dont't have an account ? @Html.ActionLink("Üye Ol", "Register", "Customer", null, new { @class = "text-warning" })</p>
+                <p class="mb-0">Hesabınız yok mu ? @Html.ActionLink("Üye Ol", "Register", "Customer", null, new { @class = "text-warning" })</p>
             </div>
         </div>
     </div>

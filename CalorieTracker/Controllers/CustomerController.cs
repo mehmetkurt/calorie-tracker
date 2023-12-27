@@ -26,7 +26,7 @@ namespace CalorieTracker.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model) //modelin verilerini alıp işlem yapmak için 
         {
             if(ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace CalorieTracker.Controllers
                         var returnUrl = TempData["ReturnUrl"];
                         if (returnUrl != null)
                             return Redirect(returnUrl.ToString() ?? "/");
-
+ 
                         return RedirectToAction("Index", "Home");
                     }
                 }

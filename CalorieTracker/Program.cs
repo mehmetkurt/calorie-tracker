@@ -1,4 +1,4 @@
-using CalorieTracker.Data;
+ using CalorieTracker.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

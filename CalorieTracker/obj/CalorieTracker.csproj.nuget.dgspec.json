@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\learning\\codeislife\\YK_2\\CalorieTracker\\CalorieTracker\\CalorieTracker.csproj": {}
+    "C:\\Users\\cosku\\OneDrive\\Ortak\\Masaüstü\\calorie-tracker-master\\CalorieTracker\\CalorieTracker.csproj": {}
   },
   "projects": {
-    "D:\\projects\\learning\\codeislife\\YK_2\\CalorieTracker\\CalorieTracker\\CalorieTracker.csproj": {
+    "C:\\Users\\cosku\\OneDrive\\Ortak\\Masaüstü\\calorie-tracker-master\\CalorieTracker\\CalorieTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\learning\\codeislife\\YK_2\\CalorieTracker\\CalorieTracker\\CalorieTracker.csproj",
+        "projectUniqueName": "C:\\Users\\cosku\\OneDrive\\Ortak\\Masaüstü\\calorie-tracker-master\\CalorieTracker\\CalorieTracker.csproj",
         "projectName": "CalorieTracker",
-        "projectPath": "D:\\projects\\learning\\codeislife\\YK_2\\CalorieTracker\\CalorieTracker\\CalorieTracker.csproj",
-        "packagesPath": "C:\\Users\\mehmet.kurt\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\learning\\codeislife\\YK_2\\CalorieTracker\\CalorieTracker\\obj\\",
+        "projectPath": "C:\\Users\\cosku\\OneDrive\\Ortak\\Masaüstü\\calorie-tracker-master\\CalorieTracker\\CalorieTracker.csproj",
+        "packagesPath": "C:\\Users\\cosku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cosku\\OneDrive\\Ortak\\Masaüstü\\calorie-tracker-master\\CalorieTracker\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mehmet.kurt\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\cosku\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

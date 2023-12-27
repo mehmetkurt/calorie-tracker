@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12 mb-3">
             <h2>Üye Ol</h2>
-            <p>Enter your email and password to login</p>
+            <p>Üye olmak için bilgilerinizi giriniz</p>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         </div>
         <div class="col-md-12">
@@ -21,7 +21,7 @@
         </div>
         <div class="col-12">
             <div class="mb-4">
-                <label asp-for="Password" class="form-label">Password</label>
+                <label asp-for="Password" class="form-label">Şifreniz</label>
                 <input asp-for="Password" type="password" class="form-control">
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
@@ -49,12 +49,12 @@
         </div>
         <div class="col-12">
             <div class="mb-4">
-                <button type="submit" class="btn btn-secondary w-100">SIGN IN</button>
+                <button type="submit" class="btn btn-secondary w-100">ÜYE OL</button>
             </div>
         </div>
         <div class="col-12">
             <div class="text-center">
-                <p class="mb-0">Do you have an account ? @Html.ActionLink("Giriş Yap", "Login", "Customer", null, new { @class = "text-warning" })</p>
+                <p class="mb-0">Hesabınız var mı ? @Html.ActionLink("Giriş Yap", "Login", "Customer", null, new { @class = "text-warning" })</p>
             </div>
         </div>
     </div>

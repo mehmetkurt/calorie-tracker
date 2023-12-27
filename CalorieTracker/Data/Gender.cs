@@ -2,8 +2,8 @@
 {
     public enum Gender : short
     {
-        Male = 10,
-        Female = 20,
-        NoIndicate = 30,
+        Erkek = 10,
+        Kadın = 20,
+        Belirsiz = 30,
     }
 }

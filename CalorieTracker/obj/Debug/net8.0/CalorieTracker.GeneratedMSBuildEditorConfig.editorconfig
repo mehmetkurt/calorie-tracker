@@ -9,67 +9,67 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CalorieTracker
 build_property.RootNamespace = CalorieTracker
-build_property.ProjectDir = D:\projects\learning\codeislife\YK_2\CalorieTracker\CalorieTracker\
+build_property.ProjectDir = C:\Users\cosku\OneDrive\Ortak\Masaüstü\calorie-tracker-master\CalorieTracker\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\projects\learning\codeislife\YK_2\CalorieTracker\CalorieTracker
+build_property.MSBuildProjectDirectory = C:\Users\cosku\OneDrive\Ortak\Masaüstü\calorie-tracker-master\CalorieTracker
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Customer/Index.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Customer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Customer/Login.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Customer/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Customer/Logout.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Customer/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Customer/Register.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Customer/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Home/Index.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Menu/Index.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Menu/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Shared/_AuthLayout.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Shared/_AuthLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BdXRoTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Shared/_Footer.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Shared/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Shared/_Layout.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Shared/_Loader.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Shared/_Loader.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2FkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Shared/_Menu.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Shared/_Menu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/Summary/Index.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/Summary/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VtbWFyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/_ViewImports.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/learning/codeislife/YK_2/CalorieTracker/CalorieTracker/Views/_ViewStart.cshtml]
+[C:/Users/cosku/OneDrive/Ortak/Masaüstü/calorie-tracker-master/CalorieTracker/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
