@@ -140,6 +140,54 @@ namespace CalorieTracker.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
+            modelBuilder.Entity("CalorieTracker.Data.Nutrition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AmountOfFat")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Calorie")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Energy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NutritionTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NutritionTypeId");
+
+                    b.ToTable("Nutritions");
+                });
+
+            modelBuilder.Entity("CalorieTracker.Data.NutritionType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NutritionTypes");
+                });
+
             modelBuilder.Entity("CalorieTracker.Data.Profile", b =>
                 {
                     b.Property<int>("Id")
@@ -271,6 +319,17 @@ namespace CalorieTracker.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("CalorieTracker.Data.Nutrition", b =>
+                {
+                    b.HasOne("CalorieTracker.Data.NutritionType", "NutritionType")
+                        .WithMany()
+                        .HasForeignKey("NutritionTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NutritionType");
                 });
 
             modelBuilder.Entity("CalorieTracker.Data.Profile", b =>

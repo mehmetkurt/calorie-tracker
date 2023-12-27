@@ -1,0 +1,12 @@
+﻿@model int
+<div class="widget widget-mini-two">
+    <div class="media">
+        <div class="icon ml-2">
+            <p class="widget-text">Besin Değerleri</p>
+            <p class="widget-numeric-value">@Model</p>
+        </div>
+        <div class="media-body">
+            <a asp-controller="Menu" asp-action="CreateNutrition" class="btn d-block">Yeni</a>
+        </div>
+    </div>
+</div>

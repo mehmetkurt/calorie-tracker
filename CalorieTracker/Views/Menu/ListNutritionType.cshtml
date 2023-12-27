@@ -1,0 +1,34 @@
+﻿@model List<NutritionTypeModel>
+
+@{
+    ViewData["Title"] = "Menü Öğeleri";
+}
+<div class="row layout-top-spacing">
+    <div class="col-12 layout-spacing">
+        <a asp-action="CreateNutritionType">Yeni Besin Değer Tipi Ekle</a> | <a asp-action="Index">Özet Ekranına Dön</a>
+    </div>
+</div>
+<div class="row layout-top-spacing">
+    <div class="col-12 layout-spacing">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr data-id="@item.Id">
+                        <td>@item.Name</td>
+                        <td>
+                            <a class="btn btn-danger" asp-action="DeleteNutritionType" asp-route-id="@item.Id">Sil</a>
+                            <a class="btn btn-primary" asp-action="UpdateNutritionType" asp-route-id="@item.Id">Düzenle</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
