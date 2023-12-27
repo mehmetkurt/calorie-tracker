@@ -1,0 +1,10 @@
+﻿@inject UserManager<Customer> userManager
+@inject IHttpContextAccessor context
+
+@{ 
+    var user = await userManager.GetUserAsync(User);
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hoşgeldin, @user.Firstname @user.Lastname</h1>
+</div>
