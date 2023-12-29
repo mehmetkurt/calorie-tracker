@@ -5,12 +5,12 @@
 }
 <div class="row layout-top-spacing">
     <div class="col-12 layout-spacing">
-        <a asp-action="CreateNutritionType">Yeni Besin Değer Tipi Ekle</a> | <a asp-action="Index">Özet Ekranına Dön</a>
+        <a asp-action="CreateNutritionType">Yeni Besin Tipi Ekle</a> | <a asp-action="Index">Özet Ekranına Dön</a>
     </div>
 </div>
 <div class="row layout-top-spacing">
     <div class="col-12 layout-spacing">
-        <table class="table">
+        <table class="table"> 
             <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -18,9 +18,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model) //modeldeki her bir nutritiontypemodel ögesi için döngü oluşturuyorum.
                 {
-                    <tr data-id="@item.Id">
+                    <tr data-id="@item.Id"> 
                         <td>@item.Name</td>
                         <td>
                             <a class="btn btn-danger" asp-action="DeleteNutritionType" asp-route-id="@item.Id">Sil</a>
@@ -32,3 +32,5 @@
         </table>
     </div>
 </div>
+
+               

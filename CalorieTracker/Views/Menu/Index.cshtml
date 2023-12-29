@@ -1,12 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "Menü Öğeleri";
+    ViewData["Title"] = "Menü Öğeleri"; //sayfanın başlığını ayarladım.  //companant(razorbileşenini) çağırdık await....... kısmıyla
+    //çağırdığım bileşenin çıktısı htmle ekleniyor.
 }
 <div class="row layout-top-spacing">
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 layout-spacing">
-      @await Component.InvokeAsync(typeof(NutritionTypeSummaryViewComponent))
+      @await Component.InvokeAsync(typeof(NutritionTypeSummaryViewComponent)) 
     </div>
 
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 layout-spacing">
         @await Component.InvokeAsync(typeof(NutritionSummaryViewComponent))
     </div>
 </div>
+

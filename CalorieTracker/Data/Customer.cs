@@ -11,6 +11,7 @@ namespace CalorieTracker.Data
         public bool IsActive { get; set; }
 
         public DateTime CreatedDate { get; set; }
+        public ICollection<Nutrition> Nutritions { get; set; }
         public ICollection<Profile> Profiles { get; set; }
     }
 }

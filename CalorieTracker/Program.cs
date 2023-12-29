@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(); //mvc hizmetlerini ekler.
 
-builder.Services.AddDbContext<CalorieDbContext>(options =>
+builder.Services.AddDbContext<CalorieDbContext>(options => //veritabaný iþlemleri gerçekleþtirmek içni
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Identity"));
 });
 
-builder.Services.AddIdentity<Customer, CustomerRole>(options =>
+builder.Services.AddIdentity<Customer, CustomerRole>(options => //KÝMLÝK doðrulama iþlemleri
     {
         options.Password.RequireDigit = false;
         options.Password.RequiredLength = 8;
@@ -31,7 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = new PathString("/Home/AccessDenied");
 });
 
-var app = builder.Build();
+var app = builder.Build(); // uygulamaolusturulur. 
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
