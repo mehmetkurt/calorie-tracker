@@ -1,0 +1,26 @@
+﻿@model CustomerNutritionModel
+
+<div class="row layout-top-spacing">
+    <div class="col-6 layout-spacing">
+        @await Html.PartialAsync("_BackToList")
+    </div>
+    <div class="col-6 layout-spacing text-end justify-content-end">
+        <h6>Yeni Besin Ekle</h6>
+    </div>
+</div>
+<div class="row layout-top-spacing">
+
+</div>
+<div class="row layout-top-spacing">
+    <div class="col-12 layout-spacing">
+        <form asp-controller="Menu">
+            <div class="row mb-3">
+                <label asp-for="NutritionId" class="col-sm-2 col-form-label">Tip Adı</label>
+                <div class="col-sm-10">
+                    <select asp-for="NutritionId" asp-items="Model.AvailableNutritions" class="form-control"></select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>

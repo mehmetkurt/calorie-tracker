@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace CalorieTracker.Migrations
 {
     /// <inheritdoc />
-    public partial class Fist : Migration
+    public partial class inyi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,7 +37,6 @@ namespace CalorieTracker.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GenderId = table.Column<short>(type: "smallint", nullable: false),
                     Gender = table.Column<short>(type: "smallint", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -57,6 +58,19 @@ namespace CalorieTracker.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NutritionTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NutritionTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,6 +202,87 @@ namespace CalorieTracker.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Nutritions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NutritionTypeId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Calorie = table.Column<float>(type: "real", nullable: false),
+                    AmountOfFat = table.Column<float>(type: "real", nullable: false),
+                    Cholesterol = table.Column<float>(type: "real", nullable: false),
+                    Protein = table.Column<float>(type: "real", nullable: false),
+                    Carbohydrate = table.Column<float>(type: "real", nullable: false),
+                    CreatedCustomerId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Nutritions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Nutritions_NutritionTypes_NutritionTypeId",
+                        column: x => x.NutritionTypeId,
+                        principalTable: "NutritionTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CustomerNutrition",
+                columns: table => new
+                {
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    NutritionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustomerNutrition", x => new { x.CustomerId, x.NutritionId });
+                    table.ForeignKey(
+                        name: "FK_CustomerNutrition_AspNetUsers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_CustomerNutrition_Nutritions_NutritionId",
+                        column: x => x.NutritionId,
+                        principalTable: "Nutritions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "Name", "NormalizedName" },
+                values: new object[] { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator", "ADMINISTRATOR" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedDate", "Email", "EmailConfirmed", "Firstname", "Gender", "IsActive", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { 1, 0, "c8e7992c-8b57-4637-b07d-0995e43c09ca", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hilal@hilal.com", false, "Hilal", (short)20, true, "SÜT", true, null, "HILAL@HILAL.COM", "HILAL@HILAL.COM", "AQAAAAIAAYagAAAAEOWbIo2S56P3dUQOPol3+QtsFRZj1MDEhL1TXov1jLmS92YHEYkt1m3KwOANwzMkFg==", null, false, null, false, "hilal@hilal.com" });
+
+            migrationBuilder.InsertData(
+                table: "NutritionTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Beyaz Et" },
+                    { 2, "Kırmızı Et" },
+                    { 3, "Deniz Mahsulleri" },
+                    { 4, "Süt Ürünleri" },
+                    { 5, "Kuru Gıdalar" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Nutritions",
+                columns: new[] { "Id", "AmountOfFat", "Calorie", "Carbohydrate", "Cholesterol", "CreatedCustomerId", "Name", "NutritionTypeId", "Protein" },
+                values: new object[,]
+                {
+                    { 1, 100f, 215f, 100f, 100f, 1, "Tavuk", 1, 100f },
+                    { 2, 100f, 215f, 100f, 100f, 1, "Balık", 3, 100f },
+                    { 3, 100f, 215f, 100f, 100f, 1, "Kuzu Çevirme", 2, 100f }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -228,6 +323,16 @@ namespace CalorieTracker.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CustomerNutrition_NutritionId",
+                table: "CustomerNutrition",
+                column: "NutritionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Nutritions_NutritionTypeId",
+                table: "Nutritions",
+                column: "NutritionTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Profile_CustomerId",
                 table: "Profile",
                 column: "CustomerId");
@@ -252,13 +357,22 @@ namespace CalorieTracker.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CustomerNutrition");
+
+            migrationBuilder.DropTable(
                 name: "Profile");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Nutritions");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "NutritionTypes");
         }
     }
 }

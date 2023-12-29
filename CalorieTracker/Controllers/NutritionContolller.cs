@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using CalorieTracker.Data;
+﻿using CalorieTracker.Data;
 using CalorieTracker.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 public class NutritionController : Controller
@@ -21,20 +21,38 @@ public class NutritionController : Controller
 
     public IActionResult Create()
     {
-        return View();
+        var model = new CustomerNutritionModel();
+
+        var nutritions = _dbContext.Nutritions.ToList().Select(n =>
+        {
+            return new SelectListItem
+            {
+                Value = n.Id.ToString(),
+                Text = n.Name
+            };
+        }).ToList();
+
+        model.AvailableNutritions = nutritions;
+
+        return View(model);
     }
 
     [HttpPost]
-    public IActionResult Create(Nutrition nutrition)
+    public IActionResult Create(NutritionModel model)
     {
         if (ModelState.IsValid)
         {
-            _dbContext.Nutritions.Add(nutrition);
+            //var nutrition = new Nutrition
+            //{
+            //    CustomerId = Convert.ToInt32(User.Claims.FirstOrDefault()),
+            //    NutritionTypeId = model.nut
+            //}
+            //_dbContext.Nutritions.Add(model);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        return View(nutrition);
+        return View(model);
     }
 
     public IActionResult Edit(int id)
@@ -57,13 +75,6 @@ public class NutritionController : Controller
     }
 
     public IActionResult Delete(int id)
-    {
-        var nutrition = _dbContext.Nutritions.FirstOrDefault(n => n.Id == id);
-        return View(nutrition);
-    }
-
-    [HttpPost]
-    public IActionResult DeleteConfirmed(int id)
     {
         var nutrition = _dbContext.Nutritions.FirstOrDefault(n => n.Id == id);
         _dbContext.Nutritions.Remove(nutrition);

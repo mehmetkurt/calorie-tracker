@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CalorieTracker.Migrations
 {
     [DbContext(typeof(CalorieDbContext))]
-    [Migration("20231219152951_Fist")]
-    partial class Fist
+    [Migration("20231229214950_inyi")]
+    partial class inyi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,9 +55,6 @@ namespace CalorieTracker.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<short>("Gender")
-                        .HasColumnType("smallint");
-
-                    b.Property<short>("GenderId")
                         .HasColumnType("smallint");
 
                     b.Property<bool>("IsActive")
@@ -111,6 +108,45 @@ namespace CalorieTracker.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c8e7992c-8b57-4637-b07d-0995e43c09ca",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "hilal@hilal.com",
+                            EmailConfirmed = false,
+                            Firstname = "Hilal",
+                            Gender = (short)20,
+                            IsActive = true,
+                            Lastname = "SÜT",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "HILAL@HILAL.COM",
+                            NormalizedUserName = "HILAL@HILAL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOWbIo2S56P3dUQOPol3+QtsFRZj1MDEhL1TXov1jLmS92YHEYkt1m3KwOANwzMkFg==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "hilal@hilal.com"
+                        });
+                });
+
+            modelBuilder.Entity("CalorieTracker.Data.CustomerNutrition", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("NutritionId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(2);
+
+                    b.HasKey("CustomerId", "NutritionId");
+
+                    b.HasIndex("NutritionId");
+
+                    b.ToTable("CustomerNutrition");
                 });
 
             modelBuilder.Entity("CalorieTracker.Data.CustomerRole", b =>
@@ -144,6 +180,137 @@ namespace CalorieTracker.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
+                });
+
+            modelBuilder.Entity("CalorieTracker.Data.Nutrition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<float>("AmountOfFat")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Calorie")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Carbohydrate")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Cholesterol")
+                        .HasColumnType("real");
+
+                    b.Property<int>("CreatedCustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NutritionTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Protein")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NutritionTypeId");
+
+                    b.ToTable("Nutritions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AmountOfFat = 100f,
+                            Calorie = 215f,
+                            Carbohydrate = 100f,
+                            Cholesterol = 100f,
+                            CreatedCustomerId = 1,
+                            Name = "Tavuk",
+                            NutritionTypeId = 1,
+                            Protein = 100f
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AmountOfFat = 100f,
+                            Calorie = 215f,
+                            Carbohydrate = 100f,
+                            Cholesterol = 100f,
+                            CreatedCustomerId = 1,
+                            Name = "Balık",
+                            NutritionTypeId = 3,
+                            Protein = 100f
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AmountOfFat = 100f,
+                            Calorie = 215f,
+                            Carbohydrate = 100f,
+                            Cholesterol = 100f,
+                            CreatedCustomerId = 1,
+                            Name = "Kuzu Çevirme",
+                            NutritionTypeId = 2,
+                            Protein = 100f
+                        });
+                });
+
+            modelBuilder.Entity("CalorieTracker.Data.NutritionType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NutritionTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Beyaz Et"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Kırmızı Et"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Deniz Mahsulleri"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Süt Ürünleri"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Kuru Gıdalar"
+                        });
                 });
 
             modelBuilder.Entity("CalorieTracker.Data.Profile", b =>
@@ -279,6 +446,36 @@ namespace CalorieTracker.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CalorieTracker.Data.CustomerNutrition", b =>
+                {
+                    b.HasOne("CalorieTracker.Data.Customer", "Customer")
+                        .WithMany("CustomerNutritions")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .IsRequired();
+
+                    b.HasOne("CalorieTracker.Data.Nutrition", "Nutrition")
+                        .WithMany("CustomerNutritions")
+                        .HasForeignKey("NutritionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Nutrition");
+                });
+
+            modelBuilder.Entity("CalorieTracker.Data.Nutrition", b =>
+                {
+                    b.HasOne("CalorieTracker.Data.NutritionType", "NutritionType")
+                        .WithMany()
+                        .HasForeignKey("NutritionTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NutritionType");
+                });
+
             modelBuilder.Entity("CalorieTracker.Data.Profile", b =>
                 {
                     b.HasOne("CalorieTracker.Data.Customer", "Customer")
@@ -343,7 +540,14 @@ namespace CalorieTracker.Migrations
 
             modelBuilder.Entity("CalorieTracker.Data.Customer", b =>
                 {
+                    b.Navigation("CustomerNutritions");
+
                     b.Navigation("Profiles");
+                });
+
+            modelBuilder.Entity("CalorieTracker.Data.Nutrition", b =>
+                {
+                    b.Navigation("CustomerNutritions");
                 });
 #pragma warning restore 612, 618
         }
