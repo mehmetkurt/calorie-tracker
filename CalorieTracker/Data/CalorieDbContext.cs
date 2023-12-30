@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CalorieTracker.Data;
 
-public class CalorieDbContext : IdentityDbContext<Customer, CustomerRole, int>
+public class CalorieDbContext : IdentityDbContext<Customer, CustomerRole, int, CustomerClaim, CustomerRoleMapping, CustomerLogin, CustomerRoleClaim, CustomerToken>
 {
     public DbSet<NutritionType> NutritionTypes { get; set; }
     public DbSet<Nutrition> Nutritions { get; set; }
+    public DbSet<CustomerNutrition> CustomerNutritions { get; set; }
 
 
     public CalorieDbContext(DbContextOptions<CalorieDbContext> options) : base(options)
@@ -17,6 +18,47 @@ public class CalorieDbContext : IdentityDbContext<Customer, CustomerRole, int>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+
+        #region Identity Table Customizations
+
+        builder.Entity<Customer>(entity =>
+        {
+            entity.ToTable(name: "Customer");
+        });
+
+        builder.Entity<CustomerRole>(entity =>
+        {
+            entity.ToTable(name: "CustomerRole");
+        });
+
+        builder.Entity<CustomerRoleMapping>(entity =>
+        {
+            entity.ToTable("CustomerRoles");
+        });
+
+        builder.Entity<CustomerClaim>(entity =>
+        {
+            entity.ToTable("CustomerClaims");
+        });
+
+        builder.Entity<CustomerLogin>(entity =>
+        {
+            entity.ToTable("CustomerLogins");
+        });
+
+        builder.Entity<CustomerRoleClaim>(entity =>
+        {
+            entity.ToTable("CustomerRoleClaims");
+        });
+
+        builder.Entity<CustomerToken>(entity =>
+        {
+            entity.ToTable("CustomerTokens");
+        });
+        #endregion
+
+        #region Seed
         //Seeding a  'Administrator' role to AspNetRoles table
         builder.Entity<CustomerRole>().HasData(new CustomerRole
         {
@@ -42,7 +84,8 @@ public class CalorieDbContext : IdentityDbContext<Customer, CustomerRole, int>
                 LockoutEnabled = true,
                 NormalizedEmail = "hilal@hilal.com".ToUpper(),
                 NormalizedUserName = "hilal@hilal.com".ToUpper(),
-                PasswordHash = hasher.HashPassword(null, "1234567890")
+                PasswordHash = hasher.HashPassword(null, "1234567890"),
+                SecurityStamp = Guid.NewGuid().ToString()
             }
         );
 
@@ -91,6 +134,6 @@ public class CalorieDbContext : IdentityDbContext<Customer, CustomerRole, int>
                 Carbohydrate = 100,
             }
         );
+        #endregion
     }
-
 }

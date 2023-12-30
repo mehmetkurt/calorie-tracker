@@ -1,7 +1,7 @@
 ﻿@model NutritionTypeModel
 <div class="row layout-top-spacing">
     <div class="col-6 layout-spacing">
-        @await Html.PartialAsync("_BackToList")
+        @await Html.PartialAsync("_BackToList", "ListNutritionType")
     </div>
     <div class="col-6 layout-spacing text-end justify-content-end">
         <h6>@Model.Name -- Düzenleniyor</h6>
@@ -9,7 +9,7 @@
 </div>
 <div class="row layout-top-spacing">
     <div class="col-12 layout-spacing">
-        <form asp-controller="Menu">
+        <form asp-controller="Nutrition">
             <input type="hidden" asp-for="Id" />
             <div class="row mb-3">
                 <label asp-for="Name" class="col-sm-2 col-form-label">Tip Adı</label>

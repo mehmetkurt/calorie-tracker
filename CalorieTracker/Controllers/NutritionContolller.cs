@@ -1,9 +1,11 @@
 ﻿using CalorieTracker.Data;
 using CalorieTracker.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
+
+[Authorize]
 public class NutritionController : Controller
 {
     private readonly CalorieDbContext _dbContext;
@@ -15,70 +17,104 @@ public class NutritionController : Controller
 
     public IActionResult Index()
     {
-        var nutritions = _dbContext.Nutritions.ToList();
-        return View(nutritions);
+        return View();
     }
 
-    public IActionResult Create()
+    #region Nutrition
+    public IActionResult CreateCustomerNutrition()
     {
-        var model = new CustomerNutritionModel();
-
-        var nutritions = _dbContext.Nutritions.ToList().Select(n =>
+        // AvailableNutritions
+        var availableNutritions = _dbContext?.Nutritions?.ToList()?.Select(n =>
         {
             return new SelectListItem
             {
-                Value = n.Id.ToString(),
-                Text = n.Name
+                Text = n.Name,
+                Value = n.Id.ToString()
             };
-        }).ToList();
+        })?.ToList();
 
-        model.AvailableNutritions = nutritions;
+        var model = new CustomerNutritionModel
+        {
+            AvailableNutritions = availableNutritions ?? []
+        };
 
+        return View(model);
+    }
+    #endregion
+
+    #region Nutrition Type
+    public IActionResult CreateNutritionType()
+    {
+        var model = new NutritionTypeModel();
         return View(model);
     }
 
     [HttpPost]
-    public IActionResult Create(NutritionModel model)
+    public IActionResult CreateNutritionType(NutritionTypeModel model)
     {
-        if (ModelState.IsValid)
+        var nutritionType = new NutritionType
         {
-            //var nutrition = new Nutrition
-            //{
-            //    CustomerId = Convert.ToInt32(User.Claims.FirstOrDefault()),
-            //    NutritionTypeId = model.nut
-            //}
-            //_dbContext.Nutritions.Add(model);
-            _dbContext.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            Name = model.Name
+        };
 
-        return View(model);
-    }
+        _dbContext.NutritionTypes.Add(nutritionType);
 
-    public IActionResult Edit(int id)
-    {
-        var nutrition = _dbContext.Nutritions.FirstOrDefault(n => n.Id == id);
-        return View(nutrition);
-    }
-
-    [HttpPost]
-    public IActionResult Edit(Nutrition nutrition)
-    {
-        if (ModelState.IsValid)
-        {
-            _dbContext.Entry(nutrition).State = EntityState.Modified;
-            _dbContext.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        return View(nutrition);
-    }
-
-    public IActionResult Delete(int id)
-    {
-        var nutrition = _dbContext.Nutritions.FirstOrDefault(n => n.Id == id);
-        _dbContext.Nutritions.Remove(nutrition);
         _dbContext.SaveChanges();
-        return RedirectToAction("Index");
+        return RedirectToAction("UpdateNutritionType", new { id = nutritionType.Id });
     }
+
+    public IActionResult UpdateNutritionType(int id)
+    {
+        var nutritionType = _dbContext.NutritionTypes.FirstOrDefault(p => p.Id == id);
+
+        var model = new NutritionTypeModel
+        {
+            Id = nutritionType.Id,
+            Name = nutritionType.Name
+        };
+
+        return View(model);
+    }
+
+    [HttpPost]
+    public IActionResult UpdateNutritionType(NutritionTypeModel model)
+    {
+        var nutritionType = _dbContext.NutritionTypes.FirstOrDefault(p => p.Id == model.Id);
+        nutritionType.Name = model.Name;
+        _dbContext.NutritionTypes.Update(nutritionType);
+        _dbContext.SaveChanges();
+
+        model = new NutritionTypeModel
+        {
+            Id = nutritionType.Id,
+            Name = nutritionType.Name
+        };
+
+        return RedirectToAction("ListNutritionType");
+    }
+
+    public IActionResult ListNutritionType()
+    {
+        var model = _dbContext.NutritionTypes.ToList().Select(p =>
+        {
+            return new NutritionTypeModel
+            {
+                Id = p.Id,
+                Name = p.Name
+            };
+        })?.ToList();
+
+        return View(model);
+    }
+
+    public IActionResult DeleteNutritionType(int id)
+    {
+        var nutritionType = _dbContext.NutritionTypes.FirstOrDefault(p => p.Id == id);
+
+        _dbContext.NutritionTypes.Remove(nutritionType);
+        _dbContext.SaveChanges();
+
+        return RedirectToAction("ListNutritionType");
+    }
+    #endregion
 }
